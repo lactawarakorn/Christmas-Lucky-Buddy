@@ -1,0 +1,42 @@
+[
+  {
+    "id": 0,
+    "name": "POR",
+    "picture": "/Por.jpeg"
+  },
+  {
+    "id": 1,
+    "name": "ARTY",
+    "picture": "/Arty.jpeg"
+  },
+  {
+    "id": 2,
+    "name": "PAO",
+    "picture": "/Pao.jpeg"
+  },
+  {
+    "id": 3,
+    "name": "LACTA",
+    "picture": "/Lacta.jpeg"
+  },
+  {
+    "id": 4,
+    "name": "JOM",
+    "picture": "/Jom.jpeg"
+  },
+  {
+    "id": 5,
+    "name": "MEEH",
+    "picture": "/Mee.jpeg"
+  },
+  {
+    "id": 6,
+    "name": "PAIR",
+    "picture": "/Pair.jpeg"
+  },
+  {
+    "id": 7,
+    "name": "P",
+    "picture": "/P.jpeg"
+  }
+]

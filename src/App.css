@@ -1,50 +1,25 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+ body {
+  background-color: rgb(145, 0, 0);
+  background-image: url("/snow.gif");
+  background-size:contain;
+  background-blend-mode: normal;
+}
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  width: 100%;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
 
 h2 {
   font-size: 60px;
   padding: 0;
-  margin: 0
+  margin: 0;
+  text-align: center;
 }
 
 h3 {
@@ -53,43 +28,143 @@ h3 {
 }
 
 .matchingBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin-bottom: 50px;
+  width: 100%;
 }
 
 .profiles {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 50px;
   margin-bottom: 50px;
+  flex-wrap: wrap;
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .profile img {
   width: 200px;
   height: 200px;
-  border: 6px solid lightgray;
+  border: 6px solid white;
   border-radius: 50%;
   margin-bottom: 20px;
   padding: 0;
+
 }
 
 .santaRaindeer {
   transform: scaleX(-1) rotateZ(-15deg);
   width: 200px;
 }
+.whoAreYou {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
 
 .whoAreYou ul {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   gap: 20px;
-  margin-bottom: 100px;
+  margin-top: 50px;
+  padding: 0;
 } 
 
 .whoAreYou button, .drawBtn {
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  background-color: darkred;
+  background-color: rgb(255, 255, 255);
   font-size: 20px;
   font-weight: bold;
   padding: 0;
 } 
+
+.password {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ gap: 20px;
+}
+
+.password input {
+  width: 250px;
+  height: 40px;
+  border: 2px solid lightgray;
+  border-radius: 50px;
+  font-size: 20px;
+  padding: 0 15px;
+  text-align: center;
+  font-weight: bold;
+  color: rgb(202, 51, 51);
+  margin-bottom: 20px;
+}
+
+.password button {
+  width: 100px;
+}
+
+.footer {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer h4, .footer h3 {
+  margin: 0 0 5px 0;
+}
+
+
+
+@media (max-width: 430px){
+  .profile img {
+    width: 120px;
+    height: 120px;
+    border: 4px solid white;
+    border-radius: 50%;
+    padding: 0;
+  }
+
+  h2 {
+    font-size: 30px;
+  }
+
+  h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .santaRaindeer {
+    transform: scaleX(-1) rotateZ(-15deg);
+    width: 80px;
+  }
+
+  .profiles {
+    gap: 5px
+  }
+
+  .whoAreYou ul {
+    gap: 10px
+  }
+
+  .whoAreYou button {
+    width: 80px;
+  height: 80px;
+  }
+  
+}

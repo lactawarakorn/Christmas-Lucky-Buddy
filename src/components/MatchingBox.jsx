@@ -7,26 +7,26 @@ function MatchingBox({ me, buddy, draw, isDrawing }) {
         <Profile className="me" title="Secret Santa" profile={me} />
         <img
           className="santaRaindeer"
-          src="../../public/reindeer-and-santa.gif"
-          alt="reindeer-and-santa.gif"
+          src="/reindeer-and-santa.gif"
+          alt="matching"
         />
         <Profile className="buddy" title="Lucky Wisher" profile={buddy} />
       </div>
-      {me.buddy === undefined && (
-        <button
-          disabled={isDrawing === "drawn"}
-          className="drawBtn"
-          onClick={() => draw()}
-        >
-          {isDrawing === "ready"
-            ? "Start"
-            : isDrawing === "drawing"
-            ? "Stop"
-            : isDrawing === "drawn"
-            ? "Matched"
-            : "Start"}
-        </button>
-      )}
+      {/* {me.buddy === undefined && ( */}
+      <button
+        disabled={isDrawing === "drawn"}
+        className="drawBtn"
+        onClick={() => draw()}
+      >
+        {isDrawing === "ready"
+          ? "Start"
+          : isDrawing === "drawing"
+          ? "Stop"
+          : isDrawing === "drawn"
+          ? "Matched"
+          : "Start"}
+      </button>
+      {/* )} */}
     </div>
   );
 }

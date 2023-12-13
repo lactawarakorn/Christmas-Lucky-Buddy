@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
@@ -6,6 +6,7 @@ import MatchingBox from "./components/MatchingBox";
 import peopleData from "./peopleData.json";
 import WhoAreYou from "./components/WhoAreYou";
 import Profile from "./components/Profile";
+import Password from "./components/Password";
 
 const anonymous = {
   santa: { name: "Secret Santa", picture: "/santa.jpg" },
@@ -19,9 +20,15 @@ function App() {
   const [isDrawing, setIsDrawing] = useState("");
   const [buddyLists, setBuddyLists] = useState(peopleData);
   const [toDraw, setToDraw] = useState(false);
+  const [pass, setPass] = useState(false);
 
   const buddyIdx = useRef();
   const interval = useRef(null);
+
+  const bgMusic = new Audio("/backgroundMusic.mp3");
+  const drawingMusic = new Audio("/drawing.mp3");
+  const matchedMusic = new Audio("matched.mp3");
+  bgMusic.volume = 0.2;
 
   const chooseMe = (profile) => {
     const newBuddyLists = peopleLists
@@ -33,6 +40,8 @@ function App() {
     setIsDrawing("ready");
     setToDraw(true);
 
+    bgMusic.play();
+
     console.log(newBuddyLists);
   };
 
@@ -43,17 +52,27 @@ function App() {
         buddyIdx.current = Math.floor(Math.random() * randomList.length);
         setBuddy(randomList[buddyIdx.current]);
       }, 100);
+
+      drawingMusic.play();
     },
 
     stop: () => {
       clearInterval(interval.current);
       interval.current = null;
-      const luckyBuddy =
-        buddyLists[Math.floor(Math.random() * buddyLists.length)];
-      setBuddy(luckyBuddy);
-      updatePeopleData(luckyBuddy);
 
+      //to random
+      // const luckyBuddy =
+      //   buddyLists[Math.floor(Math.random() * buddyLists.length)];
+      // setBuddy(luckyBuddy);
+      // updatePeopleData(luckyBuddy);
+
+      //Already Random
+      const luckyBuddy = peopleLists.filter((b) => b.name === me.buddy)[0];
       console.log(luckyBuddy);
+      setBuddy(luckyBuddy);
+
+      matchedMusic.play();
+      // console.log(luckyBuddy);
     },
   };
 
@@ -88,8 +107,19 @@ function App() {
     setBuddy(anonymous.wisher);
   };
 
+  const saveToJson = () => {
+    const toSave = JSON.stringify(peopleLists.map((p) => ({ ...p })));
+    console.log(toSave);
+  };
+
+  const checkMatching = (passwordInput) => {
+    if (passwordInput === me.password) {
+      setPass(true);
+    }
+  };
+
   return (
-    <>
+    <div className="app">
       <h1>
         {isDrawing === "ready"
           ? "Are You Ready?"
@@ -100,16 +130,35 @@ function App() {
           : "Who Are You?"}
       </h1>
       {toDraw ? (
-        <MatchingBox me={me} buddy={buddy} isDrawing={isDrawing} draw={draw} />
+        pass ? (
+          <MatchingBox
+            me={me}
+            buddy={buddy}
+            isDrawing={isDrawing}
+            draw={draw}
+          />
+        ) : (
+          <>
+            <Profile profile={me} />
+            <Password checkMatching={checkMatching} />
+          </>
+        )
       ) : (
         <>
-          <Profile profile={me} title={null} />
+          <Profile profile={me} />
           <WhoAreYou peopleLists={peopleLists} chooseMe={chooseMe} />
         </>
       )}
 
-      <button onClick={next}>Next Person</button>
-    </>
+      {/* <button onClick={next}>Next Person</button>
+
+      <button onClick={saveToJson}>Save To Json</button> */}
+      <div className="footer">
+        <h2>🎄</h2>
+        <h4>Application By</h4>
+        <h3>❝ LACTA ❞</h3>
+      </div>
+    </div>
   );
 }
 

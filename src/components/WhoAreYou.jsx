@@ -5,7 +5,7 @@ function WhoAreYou({ peopleLists, chooseMe }) {
       <ul>
         {peopleLists.map((p) => (
           <button
-            disabled={p.buddy !== undefined}
+            // disabled={p.buddy !== undefined}
             onClick={() => chooseMe(p)}
             key={p.name}
           >
